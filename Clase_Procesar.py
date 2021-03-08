@@ -1,16 +1,26 @@
 import time
 class Procesar():
-
+    
     def ProcesarArchivoXML(self,ArchivoXML):#referencia a todas los datos con su respectiva etiqueta dentro del archivo
         matrices=ArchivoXML.getElementsByTagName("matriz")  #toma todas las matrices(con etiqueta matriz), elemento Raiz
         datos=ArchivoXML.getElementsByTagName("dato")       #toma todos los datos(con etiqueta dato)
-        iterador=0
+        iterador=0    
+        CantMatrices=0
+        TodosLosDatos=[]
+        
 
         for matriz in matrices: #Se obtiene un dato en especifico dentro del archivo
+            Dimenciones=[]
             NombreMatriz=matriz.getAttribute("nombre")  #obtiene el dato del atributo de una etiqueta
             Fila=int(matriz.getAttribute("n"))
             Columna=int(matriz.getAttribute("m"))
+
             
+
+            TodosLosDatos.append(NombreMatriz)
+            
+
+
             print("nombre matriz:%s" % NombreMatriz)
             print("Filas:",str(Fila))
             print("columnas:",str(Columna))
@@ -58,7 +68,7 @@ class Procesar():
             for fila in matriz_Intercambio:
                     print(fila)
             print("\n")
-            #Verificar y sumar filas de matrizXML---------------------------------------------------------------
+            #Comparar filas de matrizXML---------------------------------------------------------------
             banderaFinalizar=False
             banderaNoMatch=False
             CantCoinciden=0
@@ -137,6 +147,18 @@ class Procesar():
             for linea in MatrizAuxIguales:
                 print(linea)
 
+            #Frecuencia con que se repiten las filas binarias
+            if MatrizAuxIguales !=[]:
+                FrecuenciaFilas=[]
+                DatosParaFr=[]
+                for linea in MatrizAuxIguales:
+                    Frecuencia=len(linea)
+                    Dato_F=linea[0]
+                    DatosParaFr.append(Dato_F)
+                    DatosParaFr.append(Frecuencia)
+                    FrecuenciaFilas.append(DatosParaFr)
+                    DatosParaFr=[]
+
             if MatrizAuxIguales != []:
                 #Suma las filas correspondientes-------------------------------------------------------
                 listaResultadoSumas=[]
@@ -184,4 +206,33 @@ class Procesar():
             print("\nMATRIZ FINAL")
             for lista in MatrizReducida:
                 print(lista)
+            CantMatrices+=1
+            TodosLosDatos.append(MatrizReducida)
+
+            #Dimeciones de la nueva Matriz(Reducida)
+            Nueva_Fila=len(MatrizReducida)
+            Dimenciones.append(Nueva_Fila)
+            Dimenciones.append(Columna)
+            TodosLosDatos.append(Dimenciones)
+
+            print("FRECUENCIAS")
+            for fila in FrecuenciaFilas:
+                print("FILA REPETITIVA:"+str(fila[0]))
+                print("FRECUENCIA:"+str(fila[1]))
+                
+            #Se almacena la frecuencia de cada fila
+            TodosLosDatos.append(FrecuenciaFilas)
+            FrecuenciaFilas=[]
+                
             print("------------------------------------\n\n")
+
+        print("TODOS LOS DATOS")
+        TodosLosDatos.append(CantMatrices)
+        for dato in TodosLosDatos:
+            print(dato)
+
+        return TodosLosDatos    #Se retorna todos los datos procesados
+
+        
+
+    
