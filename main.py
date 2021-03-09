@@ -1,9 +1,10 @@
 from os import system
+from main_lista import ListaCircularSimple
 from Clase_Procesar import Procesar
 from Clase_EscribirXML import Escribir
 from Clase_Grafica import Grafica
 from lecturaXML import Lectura
-import lecturaXML
+import time
 
 system("cls")
 opcion=0
@@ -17,6 +18,8 @@ while opcion!=6:
         LeerArchivo=Lectura()
         EscribirNuevo=Escribir()
         GraficaNueva=Grafica()
+        ListaNuevaC=ListaCircularSimple()
+
         print("----------MENÚ PRINCIPAL----------")
         print("1).Cargar Archivo")
         print("2).Procesar Archivo")
@@ -38,14 +41,17 @@ while opcion!=6:
                 proceder=False
             else:
                 print("\nruta No valida...\n")
+                time.sleep(2)
             
         elif opcion==2:
             if ArchivoXML != "":
                 print("--PROCESAR ARCHIVO--")
                 TodosLosDatosProcesados=ArchivoEntrada.ProcesarArchivoXML(ArchivoXML)
+                #ListaNuevaC.Lista_CircularS(TodosLosDatosProcesados)
                 proceder=True
             else:
                 print("\nEs necesario cargar Archivo...\n")
+                time.sleep(2)
 
         elif opcion==3:
             if proceder==True:
@@ -57,8 +63,10 @@ while opcion!=6:
                     EscribirNuevo.EscribirNuevoXML(RutaNuevoXML,TodosLosDatosProcesados)
                 else:
                     print("\nruta No valida...\n")
+                    time.sleep(2)
             else:
                 print("\nEs necesario PROCESAR Archivo...\n")    
+                time.sleep(2)
 
 
         elif opcion==4:
@@ -74,6 +82,7 @@ while opcion!=6:
                 GraficaNueva.CrearGrafica(TodosLosDatosProcesados)
             else:
                 print("\nEs necesario PROCESAR Archivo...\n")
+                time.sleep(2)
 
     except ValueError:
         print("\n>> solo números <<\n")

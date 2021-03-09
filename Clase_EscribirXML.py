@@ -1,4 +1,5 @@
 import xml.etree.cElementTree as ET
+import time
 class Escribir():
 
     def EscribirNuevoXML(self, RutaNuevoXML, ListaTodosLosDatos):
@@ -37,4 +38,6 @@ class Escribir():
         #Se escribe y genera el nuevo archivo XML  
         NuevoArchivoXML=ET.ElementTree(Etiqueta_Matrices)
         NuevoArchivoXML.write(RutaNuevoXML)
+        print("Se escribió el NUEVO archivo !!!")
+        time.sleep(2)
 

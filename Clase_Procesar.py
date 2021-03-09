@@ -15,15 +15,11 @@ class Procesar():
             Fila=int(matriz.getAttribute("n"))
             Columna=int(matriz.getAttribute("m"))
 
-            
+            TodosLosDatos.append(NombreMatriz)            
 
-            TodosLosDatos.append(NombreMatriz)
-            
-
-
-            print("nombre matriz:%s" % NombreMatriz)
+            """print("nombre matriz:%s" % NombreMatriz)
             print("Filas:",str(Fila))
-            print("columnas:",str(Columna))
+            print("columnas:",str(Columna))"""
 
             contador=(Fila*Columna)+iterador
             #print("contador: "+str(contador))
@@ -46,9 +42,9 @@ class Procesar():
 
                 iterador+=1
 
-            print("\nMATRIZ NORMAL")
+            """print("\nMATRIZ NORMAL")
             for fila in MatrizDatosXML:
-                print(fila)
+                print(fila)"""
 
             #crea la matriz binaria
             matriz_Intercambio=[]
@@ -64,10 +60,9 @@ class Procesar():
                 matriz_Intercambio.append(lista_Intercambio)
                 lista_Intercambio=[]
 
-            print("\nMatriz BINARIA")
+            """print("\nMatriz BINARIA")
             for fila in matriz_Intercambio:
-                    print(fila)
-            print("\n")
+                    print(fila)"""
             #Comparar filas de matrizXML---------------------------------------------------------------
             banderaFinalizar=False
             banderaNoMatch=False
@@ -106,10 +101,10 @@ class Procesar():
                 if FilaTemporal>=Fila or AumentarFila>=Fila:
                     banderaFinalizar=True
 
-            print("\n--->>>filas que coinciden<<<---")
+            """print("\n--->>>filas que coinciden<<<---")
             for linea in MatrizAuxIguales:
                 print(linea)
-            print("mostro...coiciden")
+            print("mostro...coiciden")"""
             #Eliminar filas repetidas dentro de MatrizAuxIguales----------------------------------
             if MatrizAuxIguales!=[]:
                 band1=True
@@ -143,9 +138,9 @@ class Procesar():
                     if Temporal_i == len(MatrizAuxIguales):
                         break
             
-            print("\nSIMPLIFICADA")
+            """print("\nSIMPLIFICADA")
             for linea in MatrizAuxIguales:
-                print(linea)
+                print(linea)"""
 
             #Frecuencia con que se repiten las filas binarias
             if MatrizAuxIguales !=[]:
@@ -182,9 +177,9 @@ class Procesar():
                     ListaTemporal=[]
                         
 
-                print("\nlistas sumadas")
+                """print("\nlistas sumadas")
                 for lista in MatrizReducida:
-                    print(lista)
+                    print(lista)"""
                 #Agrega las filas que no se sumaron a la MatrizReducida-----------------------------------------------
                 ContadorVerificar=0
                 for PosicionVerificar in range(len(MatrizDatosXML)): 
@@ -203,9 +198,10 @@ class Procesar():
             else:
                 MatrizReducida=MatrizDatosXML[:]
             
-            print("\nMATRIZ FINAL")
+            """print("\nMATRIZ FINAL")
             for lista in MatrizReducida:
-                print(lista)
+                print(lista)"""
+
             CantMatrices+=1
             TodosLosDatos.append(MatrizReducida)
 
@@ -215,21 +211,25 @@ class Procesar():
             Dimenciones.append(Columna)
             TodosLosDatos.append(Dimenciones)
 
-            print("FRECUENCIAS")
+            """print("FRECUENCIAS")
             for fila in FrecuenciaFilas:
                 print("FILA REPETITIVA:"+str(fila[0]))
-                print("FRECUENCIA:"+str(fila[1]))
+                print("FRECUENCIA:"+str(fila[1]))"""
                 
             #Se almacena la frecuencia de cada fila
             TodosLosDatos.append(FrecuenciaFilas)
             FrecuenciaFilas=[]
-                
-            print("------------------------------------\n\n")
 
-        print("TODOS LOS DATOS")
         TodosLosDatos.append(CantMatrices)
+        """print("TODOS LOS DATOS")
         for dato in TodosLosDatos:
-            print(dato)
+            print(dato)"""
+        
+        print("calculando matrices binarias...")
+        time.sleep(2)
+        print("Realizando suma de tuplas...")
+        time.sleep(2)
+        print("------------------------------------\n\n")
 
         return TodosLosDatos    #Se retorna todos los datos procesados
 

@@ -51,6 +51,3 @@ class Grafica():
         PosicionNombre+=4
         PosicionMatrizR+=4
         g.view()
-    
-
-    
