@@ -1,6 +1,7 @@
 from os import system
 from Clase_Procesar import Procesar
 from Clase_EscribirXML import Escribir
+from Clase_Grafica import Grafica
 from lecturaXML import Lectura
 import lecturaXML
 
@@ -15,6 +16,7 @@ while opcion!=6:
         ArchivoEntrada=Procesar()
         LeerArchivo=Lectura()
         EscribirNuevo=Escribir()
+        GraficaNueva=Grafica()
         print("----------MENÚ PRINCIPAL----------")
         print("1).Cargar Archivo")
         print("2).Procesar Archivo")
@@ -68,7 +70,10 @@ while opcion!=6:
             print("----------------------------------")
 
         elif opcion==5:
-            pass
+            if proceder ==True:
+                GraficaNueva.CrearGrafica(TodosLosDatosProcesados)
+            else:
+                print("\nEs necesario PROCESAR Archivo...\n")
 
     except ValueError:
         print("\n>> solo números <<\n")
